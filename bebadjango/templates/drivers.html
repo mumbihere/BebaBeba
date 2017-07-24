@@ -1,0 +1,17 @@
+
+{% extends 'base2.html' %}
+
+{% block content %}
+
+    
+
+    <h2>Drivers</h2>
+    <ul>
+        {% for driver in my_drivers %}
+            <li>{{ driver.name }}</li>
+            <li>{{ driver.email }}</li>
+
+        {% endfor %}
+    </ul>
+
+{% endblock %}
