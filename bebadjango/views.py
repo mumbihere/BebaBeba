@@ -69,20 +69,31 @@ def payments(ListView):
     model = Payment
 
 
-
-class myDriver(ListView):
-     # template_name = 'drivers.html'
-     # context_object_name = 'my_drivers'
-
-     # def get_queryset(self):
-     #     self.driver = get_object_or_404(Driver, name=self.args[0])
-     #     return Driver.objects.filter(driver=self.driver)
-
-     # model = Driver
-
-        context_object_name = 'my_drivers'
+#views
+class DriverView(ListView):
+        context_object_name = 'driverview'
         queryset = Driver.objects.all()
         template_name = 'drivers.html'
+
+class PaymentView(ListView):
+        context_object_name = 'paymentview'
+        queryset = Payment.objects.all()
+        template_name = 'payments.html'
+
+class PassengerView(ListView):
+        context_object_name = 'passengerview'
+        queryset = Passenger.objects.all()
+        template_name = 'passengers.html'
+
+
+class BookingView(ListView):
+        context_object_name = 'bookingview'
+        queryset = Booking.objects.all()
+        template_name = 'bookings.html'
+
+
+def DashboardView(request):
+    return render(request, 'dashboard.html')
 
 
 #API

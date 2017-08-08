@@ -12,16 +12,17 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 
-    <!-- Custom CSS -->
-    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
+       <!-- Custom Fonts -->
     <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+ <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+
 
 </head>
 
@@ -36,8 +37,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">Home</a></li>
-                    <li class="dropdown">
+                    <li><a href="/home">Home</a></li>
+<!--                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Explore <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li onclick="toggleFunction('drivers')"><a href="#drivers">Drivers</a></li>
@@ -45,8 +46,8 @@
                                 <li><a href="#payments">Payments</a></li>
                                 <li><a href="#bookings">Bookings</a></li>
                             </ul>
-                    </li>
-                    <li><a href="#reports">Reports</a></li>
+                    </li> -->
+                    <li><a href="/reports">Reports</a></li>
                     <li><a href="{% url 'login'%}">Log Out</a></li>
 
 
@@ -70,11 +71,13 @@
 
 </section>
 
+
+
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>

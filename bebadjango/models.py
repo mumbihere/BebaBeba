@@ -27,7 +27,7 @@ class Payment(models.Model):
     # class Meta:
     #     abstract = True
     def __str__(self):              # __unicode__ on Python 2
-        return self.id
+        return str(self.id)
 
 class Booking(models.Model):
 	driver = models.ForeignKey('Driver', on_delete=models.CASCADE)

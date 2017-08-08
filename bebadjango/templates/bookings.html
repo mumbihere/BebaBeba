@@ -1,0 +1,29 @@
+
+{% extends 'base2.html' %}
+
+{% block content %}
+
+    
+
+    <h2>Passengers</h2>
+	<table border=1>
+	    <tr>
+	        <th>Driver Name</th>
+	        <th>Passenger Name</th>
+	        <th>Date</th>
+
+	    </tr>
+	    {% for booking in bookingview %}
+	    <tr> 
+	        <td>{{ booking.driver.name }}</td>
+	        <td>{{ booking.passenger.name }}</td>
+	        <td>{{ booking.date }}</td>
+
+	    </tr>
+	    {% endfor %}
+	</table>
+
+{% endblock %}
+
+
+

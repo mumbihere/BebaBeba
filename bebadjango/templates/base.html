@@ -12,8 +12,6 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 
-    <!-- Custom CSS -->
-    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{% static 'font-awesome/css/font-awesome.css' %}" rel="stylesheet">
@@ -22,6 +20,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/stylish-portfolio.css' %}" rel="stylesheet">
+
 
 </head>
 
@@ -36,8 +38,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#home">Home</a></li>
-                    <li class="dropdown">
+                    <li><a href="/home">Home</a></li>
+<!--                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">Explore <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li onclick="toggleFunction('drivers')"><a href="#drivers">Drivers</a></li>
@@ -45,8 +47,8 @@
                                 <li><a href="#payments">Payments</a></li>
                                 <li><a href="#bookings">Bookings</a></li>
                             </ul>
-                    </li>
-                    <li><a href="#reports">Reports</a></li>
+                    </li> -->
+                    <li><a href="/reports">Reports</a></li>
                     <li><a href="{% url 'login'%}">Log Out</a></li>
 
 
@@ -69,9 +71,9 @@
                         <div class="col-md-6">
                             <div class="portfolio-item">
                                 <div class="imgcontainer">
-                                    <a href="#drivers"><img class="image" src="{% static 'img/driver.jpg' %}"> </a>
+                                    <a href="/drivers"><img class="image" src="{% static 'img/driver.jpg' %}"> </a>
                                       <div class="middle">
-                                            <div class="hovertext"><a href="#drivers">Drivers</a></div>
+                                            <div class="hovertext"><a href="/drivers">Drivers</a></div>
                                         </div>
                                 </div>
                             </div>
@@ -79,9 +81,9 @@
                         <div class="col-md-6">
                             <div class="portfolio-item">
                                 <div class="imgcontainer">
-                                    <a href="#passengers"><img class="image" src="{% static 'img/passenger.jpg' %}"> </a>
+                                    <a href="/passengers"><img class="image" src="{% static 'img/passenger.jpg' %}"> </a>
                                       <div class="middle">
-                                            <div class="hovertext"><a href="#passengers">Passengers</a></div>
+                                            <div class="hovertext"><a href="/passengers">Passengers</a></div>
                                         </div>
                                 </div>
                             </div>
@@ -89,9 +91,9 @@
                         <div class="col-md-6">
                             <div class="portfolio-item">
                                 <div class="imgcontainer">
-                                    <a href="#payments"><img class="image" src="{% static 'img/coins.jpg' %}"> </a>
+                                    <a href="/payments"><img class="image" src="{% static 'img/coins.jpg' %}"> </a>
                                       <div class="middle">
-                                            <div class="hovertext"><a href="#payments">Payments</a></div>
+                                            <div class="hovertext"><a href="/payments">Payments</a></div>
                                         </div>
                                 </div>
                             </div>
@@ -99,9 +101,9 @@
                         <div class="col-md-6">
                             <div class="portfolio-item">
                                 <div class="imgcontainer">
-                                    <a href="#payments"><img class="image" src="{% static 'img/person.jpg' %}"> </a>
+                                    <a href="/payments"><img class="image" src="{% static 'img/person.jpg' %}"> </a>
                                       <div class="middle">
-                                            <div class="hovertext"><a href="#bookings">Bookings</a></div>
+                                            <div class="hovertext"><a href="/bookings">Bookings</a></div>
                                         </div>
                                 </div>
                             </div>
@@ -153,87 +155,19 @@
         </div>
     </section>
 
-    <!-- Reports -->
-    <section id="reports" class="services bg-primary">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-10 col-lg-offset-1">
-                    <h2>Reports</h2>
-                    <hr class="small">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-id-card-o" aria-hidden="true"></i>
-                            </span>
-                                <h4>
-                                    <strong>Service Name</strong>
-                                </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-compass fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Service Name</strong>
-                                </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-flask fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Service Name</strong>
-                                </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="service-item">
-                                <span class="fa-stack fa-4x">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-shield fa-stack-1x text-primary"></i>
-                            </span>
-                                <h4>
-                                    <strong>Service Name</strong>
-                                </h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                                <a href="#" class="btn btn-light">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.row (nested) -->
-                </div>
-                <!-- /.col-lg-10 -->
-            </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
-
 
 
 {% block content %}
 
     {% endblock %}
 
+
     <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+    <script src="{% static 'js/jquery.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
 
     <!-- Custom Theme JavaScript -->
     <script>

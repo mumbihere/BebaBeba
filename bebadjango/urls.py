@@ -47,10 +47,12 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     #User Dashboard 
-    url(r'^drivers/$', views.myDriver.as_view()),
-    # url(r'^passengers/$', views.passengers.as_view()),
-    # url(r'^payments/$', views.payments.as_view()),
-    # url(r'^bookings/$', views.bookings.as_view())
+    url(r'^drivers/$', views.DriverView.as_view()),
+    url(r'^passengers/$', views.PassengerView.as_view()),
+    url(r'^payments/$', views.PaymentView.as_view()),
+    url(r'^bookings/$', views.BookingView.as_view()),
+    url(r'^reports/$', views.DashboardView),
+
 
     #API
     url(r'^api/bookings/$', views.BookingList.as_view()),
@@ -61,8 +63,6 @@ urlpatterns = [
     url(r'^api/passengers/(?P<pk>[0-9]+)/$', views.PassengerDetail.as_view()),
     url(r'^api/payments/$', views.PaymentList.as_view()),
     url(r'^api/payments/(?P<pk>[0-9]+)/$', views.PaymentDetail.as_view()),
-
-
     url(r'home$', views.index,name='index'),
 
 ]
