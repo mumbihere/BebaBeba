@@ -150,8 +150,24 @@ from rest_framework import permissions
 class totals(APIView):
     def get(self, request, format=None):
         """
-        Return a list of all users.
+        Return totals
         """
+        drivers= str(Driver.objects.count())
+        bookings= str(Booking.objects.count())
+        passengers= str(Passenger.objects.count())
+        payments= str(Payment.objects.count())
+
+        return Response({'drivers':drivers,'bookings':bookings,'passengers':passengers,'payments':payments})
+
+
+@permission_classes((permissions.AllowAny,))
+class historical_data(APIView):
+    def get(self, request, format=None):
+        data = {} #for storing data
+        #last five months 
+        months = [calendar.month_name[x] for x in list(range((datetime.datetime.now().month-4),datetime.datetime.now().month+1))]
+        data.dict('months',months)
+
         drivers= str(Driver.objects.count())
         bookings= str(Booking.objects.count())
         passengers= str(Passenger.objects.count())

@@ -1,6 +1,6 @@
 //function for updating the total at the top of dashboard
 function updateTotals(){
-    var url = 'http://127.0.0.1:8000/api/totals/?format=json'
+    var url = '/api/totals/?format=json'
     $.getJSON(url,function(data){
         console.log(data);
         $( "#driver_total" ).html(data.drivers);

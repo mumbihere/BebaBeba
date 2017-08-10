@@ -63,6 +63,7 @@ urlpatterns = [
     url(r'^api/payments/$', views.PaymentList.as_view()),
     url(r'^api/payments/(?P<pk>[0-9]+)/$', views.PaymentDetail.as_view()),
     url(r'^api/totals/$', views.totals.as_view()),
+    url(r'^api/historical_data/$', views.historical_data.as_view()),
 
     url(r'^$', views.index,name='index'),
 

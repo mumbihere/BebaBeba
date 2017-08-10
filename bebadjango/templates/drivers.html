@@ -10,11 +10,15 @@
 	    <tr>
 	        <th>Name</th>
 	        <th>Email Address</th>
+	        <th>Date Joined</th>
+	        <th>Approved</th>
 	    </tr>
 	    {% for driver in driverview %}
 	    <tr> 
 	        <td>{{ driver.name }}</td>
 	        <td>{{ driver.email }}</td>
+	        <td>{{ driver.date_joined.date}}</td>
+	        <td>{{ driver.approved }}</td>
 	    </tr>
 	    {% endfor %}
 	</table>

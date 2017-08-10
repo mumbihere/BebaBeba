@@ -16,7 +16,7 @@
 	    {% for payment in paymentview %}
 	    <tr> 
 	        <td>{{ payment.passenger.name }}</td>
-	        <td>{{ payment.date }}</td>
+	        <td>{{ payment.date.date }}</td>
 	        <td>{{ payment.amount }}</td>
 
 	    </tr>

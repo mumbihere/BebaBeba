@@ -10,11 +10,15 @@
 	    <tr>
 	        <th>Name</th>
 	        <th>Email Address</th>
+	        <th>Date Joined</th>
+
 	    </tr>
 	    {% for passenger in passengerview %}
 	    <tr> 
 	        <td>{{ passenger.name }}</td>
 	        <td>{{ passenger.email }}</td>
+	        <td>{{ passenger.date_joined.date}}</td>
+
 	    </tr>
 	    {% endfor %}
 	</table>

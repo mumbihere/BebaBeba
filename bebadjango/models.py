@@ -4,6 +4,10 @@ from django.utils import timezone
 class Driver(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
+    date_joined = models.DateTimeField('date joined',default=timezone.now)
+    approved = models.BooleanField(default=False)
+
+
 
     class Meta:
         ordering = ["-name"]
@@ -14,6 +18,7 @@ class Driver(models.Model):
 class Passenger(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
+    date_joined = models.DateTimeField('date joined',default=timezone.now)
     class Meta:
         ordering = ["-name"]
 
