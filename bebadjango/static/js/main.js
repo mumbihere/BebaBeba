@@ -1,11 +1,28 @@
+//function for updating the total at the top of dashboard
+function updateTotals(){
+    var url = 'http://127.0.0.1:8000/api/totals/?format=json'
+    $.getJSON(url,function(data){
+        console.log(data);
+        $( "#driver_total" ).html(data.drivers);
+        $( "#passenger_total" ).html(data.passengers);
+        $( "#booking_total" ).html(data.bookings);
+        $( "#payment_total" ).html(data.payments);
 
-// Function for drawing the bottom column chart
+
+
+    })
+}
+
+
+
+
+// Function for drawing the bottom column chart on the dashboard
 function drawChart(highchartdiv){
     $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
 
         // Create the chart
-        var answers = ['January','February' ,'March', 'April','May'];
-        var answer_counts= [
+        var months = ['January','February' ,'March', 'April','May'];
+        var datacount= [
                     {name: 'Passengers', data : [2,1,0,2,5]},
                     {name: 'Bookings', data: [2,4,3,1,3]},
                     {name: 'Drivers', data: [2,2,1,4,2]},
@@ -23,7 +40,7 @@ function drawChart(highchartdiv){
                             text:'Dashboard'
                         },
                         xAxis:{
-                            categories: answers,
+                            categories: months,
                             title: {
                                 // text: 'Metrics'
                             }
@@ -34,7 +51,7 @@ function drawChart(highchartdiv){
                                 text: 'Values'
                             }
                         }, 
-                        series:answer_counts
+                        series:datacount
                    };
 
         var chart = new Highcharts.Chart(options);

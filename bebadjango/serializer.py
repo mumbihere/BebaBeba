@@ -28,3 +28,5 @@ class PaymentSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Payment
 		fields = ('passenger','date','amount')
+
+

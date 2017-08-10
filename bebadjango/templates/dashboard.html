@@ -14,10 +14,10 @@
 <!-- Top Numbers enclosed in circles -->
 <div class="row" id="totals" style="min-width: 310px; height: 300px; margin: 0 auto">
 	<div class="col-sm-2" ></div>
-	<div class="col-sm-2 numberCircle" id="passenger_total">30</div>
-	<div class="col-sm-2 numberCircle" id="booking_total">30</div>
-	<div class="col-sm-2 numberCircle" id="driver_total">30</div>
-	<div class="col-sm-2 numberCircle" id="payment_total">30</div>
+	<div class="col-sm-2 numberCircle" id="passenger_total"></div>
+	<div class="col-sm-2 numberCircle" id="booking_total"></div>
+	<div class="col-sm-2 numberCircle" id="driver_total"></div>
+	<div class="col-sm-2 numberCircle" id="payment_total"></div>
 	<div class="col-sm-2 "></div>
 </div>
 <div class="row">
@@ -33,7 +33,7 @@
 <div id="chart" style="min-width: 310px; height: 400px; "></div>
 
 <script type="text/javascript">
-	$( document ).ready(function() {    drawChart('chart'); });
+	$( document ).ready(function() {    updateTotals(); drawChart('chart'); });
 </script>
 
 

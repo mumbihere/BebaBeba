@@ -140,13 +140,25 @@ class BookingDetail(generics.RetrieveUpdateDestroyAPIView):
 class BookingList(generics.ListCreateAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
-    def get_totals(self,request):
-        return Response(Booking.objects.count())
 
+
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
+
+
+@permission_classes((permissions.AllowAny,))
 class totals(APIView):
     def get(self, request, format=None):
         """
         Return a list of all users.
         """
-        usernames = [user.username for user in User.objects.all()]
-        return self.Response(usernames)
+        drivers= str(Driver.objects.count())
+        bookings= str(Booking.objects.count())
+        passengers= str(Passenger.objects.count())
+        payments= str(Payment.objects.count())
+
+        return Response({'drivers':drivers,'bookings':bookings,'passengers':passengers,'payments':payments})
+
+
+
+
