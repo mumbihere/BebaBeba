@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'bebadjango'
+    'bebadjango',
+
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025

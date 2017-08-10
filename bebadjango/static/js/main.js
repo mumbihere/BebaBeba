@@ -1,7 +1,6 @@
 
-
+// Function for drawing the bottom column chart
 function drawChart(highchartdiv){
-
     $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
 
         // Create the chart

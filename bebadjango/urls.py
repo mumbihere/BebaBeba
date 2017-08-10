@@ -38,12 +38,11 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-
-    # url(r'^accounts/login/$', views.login),
-    # url(r'^logout/$', views.logout),
-    # url(r'^changepassword/$', views.change_password),
-    url(r'^create_user/(?P<username>[0-9A-Za-z]+)/(?P<password>[0-9A-Za-z]+)/(?P<email>[0-9A-Za-z_@.]+)/$', views.create_user),
     url(r'^accounts/', include('django.contrib.auth.urls')),
+    url(r'^accounts/login/$', views.auth),
+    url(r'^accounts/logout/$', views.logout_view, name='logout'),
+    url(r'^accounts/changepassword/$', views.change_password),
+    url(r'^accounts/create_user/(?P<username>[0-9A-Za-z]+)/(?P<password>[0-9A-Za-z]+)/(?P<email>[0-9A-Za-z_@.]+)/$', views.create_user),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     #User Dashboard 
@@ -63,7 +62,9 @@ urlpatterns = [
     url(r'^api/passengers/(?P<pk>[0-9]+)/$', views.PassengerDetail.as_view()),
     url(r'^api/payments/$', views.PaymentList.as_view()),
     url(r'^api/payments/(?P<pk>[0-9]+)/$', views.PaymentDetail.as_view()),
-    url(r'home$', views.index,name='index'),
+    url(r'^api/totals/$', views.totals),
+
+    url(r'^$', views.index,name='index'),
 
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -15,7 +15,7 @@ from rest_framework.response import Response
 from bebadjango.serializer import BookingSerializer,DriverSerializer,PaymentSerializer,PassengerSerializer
 
 
-@login_required(login_url='/accounts/login/')
+@login_required(login_url='accounts/login/')
 def index(request):
 	# return render_to_response('index.html', {'data': "Yahweh is a great God!!!"})
 	context = {'data': "Yahweh is a great God!!!"}
@@ -33,27 +33,35 @@ def auth(request):
     if user is not None:
         login(request, user)
         # Redirect to a success page.
+        return render_to_response('index.html')
         
     else:
         # Return an 'invalid login' error message.
-        pass
+        context = {'msg': "Please enter the correct username and password!!!"}
+        return render(request, 'registration/login.html', context)
 
-@login_required(login_url='/accounts/login/')
 def logout_view(request):
     logout(request)
     # Redirect to a success page.
+    return render_to_response('registration/login.html',{'msg':'logged out'})
+    #context = {'msg': "Successfully logged out!!!"}
+    #return render( 'registration/login.html')
 
 # @login_required(login_url='/accounts/login/')
 def create_user(request,username, email, password):
 	user = User.objects.create_user(username, email, password)
-	# Redirect to a success page.
+    #u.save()
+    # Redirect to a success page.
+    #return render_to_response('index.html',{'msg':'User Successfully Created'})
+
 
 @login_required(login_url='/accounts/login/')
 def change_password(request,username,new_password):
 	u = User.objects.get(username=username)
 	u.set_password(new_password)
-	u.save()
+	#u.save()
 	# Redirect to a success page.
+    #return render_to_response('index.html',{'msg':'Password Successfully Reset'})
 
 
 @login_required(login_url='/accounts/login/')
@@ -100,8 +108,6 @@ def DashboardView(request):
 class DriverList(generics.ListCreateAPIView):
     queryset = Driver.objects.all()
     serializer_class = DriverSerializer
-
-
         
 class DriverDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Driver.objects.all()
@@ -130,3 +136,17 @@ class BookingList(generics.ListCreateAPIView):
 class BookingDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Booking.objects.all()
     serializer_class = BookingSerializer
+
+class BookingList(generics.ListCreateAPIView):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+    def get_totals(self,request):
+        return Response(Booking.objects.count())
+
+class totals(APIView):
+    def get(self, request, format=None):
+        """
+        Return a list of all users.
+        """
+        usernames = [user.username for user in User.objects.all()]
+        return self.Response(usernames)
