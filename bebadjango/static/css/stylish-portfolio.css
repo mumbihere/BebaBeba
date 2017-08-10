@@ -355,7 +355,7 @@ tr:hover {background-color: #f5f5f5}
     position: relative;
     top: 80px;
 }
-#driver_total{ background: rgb(144,237,125); }
-#booking_total{ background: rgb(67,67,72); }
-#passenger_total{ background: rgb(124,181,236); }
+#passenger_total{ background: rgb(144,237,125); }
+#driver_total{ background: rgb(67,67,72); }
+#booking_total{ background: rgb(124,181,236); }
 #payment_total{ background: rgb(247,163,92); }

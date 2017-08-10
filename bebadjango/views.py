@@ -13,7 +13,11 @@ from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from bebadjango.serializer import BookingSerializer,DriverSerializer,PaymentSerializer,PassengerSerializer
-
+import datetime
+import calendar
+from django.db.models.functions import ExtractMonth
+from django.db.models import Count
+from collections import OrderedDict
 
 @login_required(login_url='accounts/login/')
 def index(request):
@@ -156,8 +160,8 @@ class totals(APIView):
         bookings= str(Booking.objects.count())
         passengers= str(Passenger.objects.count())
         payments= str(Payment.objects.count())
-
-        return Response({'drivers':drivers,'bookings':bookings,'passengers':passengers,'payments':payments})
+        data = {'drivers':drivers,'bookings':bookings,'passengers':passengers,'payments':payments}
+        return Response(OrderedDict(sorted(data.items()))) #order 
 
 
 @permission_classes((permissions.AllowAny,))
@@ -165,15 +169,40 @@ class historical_data(APIView):
     def get(self, request, format=None):
         data = {} #for storing data
         #last five months 
-        months = [calendar.month_name[x] for x in list(range((datetime.datetime.now().month-4),datetime.datetime.now().month+1))]
-        data.dict('months',months)
+        lfm = list(range((datetime.datetime.now().month-4),datetime.datetime.now().month+1))
+        months = [calendar.month_name[x] for x in lfm]
+        data['months'] = months
 
-        drivers= str(Driver.objects.count())
-        bookings= str(Booking.objects.count())
-        passengers= str(Passenger.objects.count())
-        payments= str(Payment.objects.count())
 
-        return Response({'drivers':drivers,'bookings':bookings,'passengers':passengers,'payments':payments})
+        d =list(Driver.objects.annotate(month=ExtractMonth('date_joined')).values('month').annotate(c=Count('id')).values('month', 'c'))
+        b =list(Booking.objects.annotate(month=ExtractMonth('date')).values('month').annotate(c=Count('id')).values('month', 'c'))
+        pt =list(Payment.objects.annotate(month=ExtractMonth('date')).values('month').annotate(c=Count('id')).values('month', 'c'))
+        pr =list(Passenger.objects.annotate(month=ExtractMonth('date_joined')).values('month').annotate(c=Count('id')).values('month', 'c'))
+
+        #Function creates dict values where k=month and v=no_of_hits. I use OrderedDict to
+        #order by month. I also put zeros for months with no hits
+        def gen(kk,name):
+            monthlydata = {}
+            for k in kk:
+                try:
+                    monthlydata[k['month']]=monthlydata[k['month']]+1
+                except KeyError:
+                    monthlydata[k['month']]=1
+            #put zeros for months with no hits
+            for m in lfm:
+                if m not in monthlydata.keys():
+                    monthlydata[m]=0
+            ordered_monthlydata = OrderedDict(sorted(monthlydata.items()))
+
+            return {'name':name, 'data':ordered_monthlydata.values()}
+
+        #Apply the function defined above to all relevant 'items' to output a list of key value pairs
+        mylist = [gen(x[0],x[1]) for x in [(d,'driver'),(b,'bookings'),(pt,'payments'),(pr,'passengers')] ]
+        mylist_ = sorted(mylist, key=lambda k: k['name']) #sort by name (driver,bookings...etc)
+
+
+        data['monthly_counts'] = mylist_
+        return Response(data)
 
 
 

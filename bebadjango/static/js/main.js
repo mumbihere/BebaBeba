@@ -7,29 +7,19 @@ function updateTotals(){
         $( "#passenger_total" ).html(data.passengers);
         $( "#booking_total" ).html(data.bookings);
         $( "#payment_total" ).html(data.payments);
-
-
-
     })
 }
 
 
 
 
-// Function for drawing the bottom column chart on the dashboard
+// Function for drawing the bottom column chart on the dashboard for last 5 months
 function drawChart(highchartdiv){
-    $.getJSON('https://www.highcharts.com/samples/data/jsonp.php?filename=aapl-c.json&callback=?', function (data) {
+    $.getJSON('/api/historical_data/?format=json', function (data) {
 
         // Create the chart
-        var months = ['January','February' ,'March', 'April','May'];
-        var datacount= [
-                    {name: 'Passengers', data : [2,1,0,2,5]},
-                    {name: 'Bookings', data: [2,4,3,1,3]},
-                    {name: 'Drivers', data: [2,2,1,4,2]},
-                    {name: 'Payments', data: [4,3,6,1,3]} 
-
-                    ];
-
+        var months = data.months;
+        var datacount= data.monthly_counts;
 
         var options={
                         chart: {
@@ -37,7 +27,7 @@ function drawChart(highchartdiv){
                             type: 'column'
                         },
                         title: {
-                            text:'Dashboard'
+                            text:'Dashboard: Last Five Months'
                         },
                         xAxis:{
                             categories: months,
